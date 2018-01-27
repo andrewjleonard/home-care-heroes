@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :messages, :only => [:create, :index, :show, :new]
   devise_for :users
   devise_for :admins
   root 'pages#home'
