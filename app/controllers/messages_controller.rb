@@ -4,7 +4,16 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+    if current_admin
     @messages = Message.all
+    else
+      if user_signed_in?
+        @messages = current_user.recipients
+      else
+        @messages = Message.all
+      end
+    end
+
   end
 
   # GET /messages/1
