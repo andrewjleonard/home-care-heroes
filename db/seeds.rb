@@ -8,3 +8,11 @@
 user = User.create! :name => 'First guy', :email => '1@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret'
 user1 = User.create! :name => 'Second gal', :email => '2@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret'
 user2 = User.create! :name => 'Third guy', :email => '3@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret'
+
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 1, :recipient_id => 2
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 2, :recipient_id => 3
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 1, :recipient_id => 2
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 3, :recipient_id => 1
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 3, :recipient_id => 2
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 3, :recipient_id => 2
+message = Message.create! :title => 'Hello', :body => 'Just saying hi!', :sender_id => 3, :recipient_id => 1
