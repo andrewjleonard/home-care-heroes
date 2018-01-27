@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HomeCareHeroes</title>
+    <title>Home Care Heroes</title>
     <%= csrf_meta_tags %>
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +11,21 @@
 
   <body>
     <div class="container text-left">
+
+      <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <%- end -%>
+
+      <% if user_signed_in? %>
+      <%= link_to('User Logout', destroy_user_session_path, method: :delete) %>
+      <% end %>
+      <% if admin_signed_in? %>
+      <%= link_to('Admin Logout', destroy_admin_session_path, method: :delete) %>
+      <% end %>
+      <%= link_to('Home', root_path) %>
+
     <%= yield %>
+    
   </div>
   </body>
 </html>
