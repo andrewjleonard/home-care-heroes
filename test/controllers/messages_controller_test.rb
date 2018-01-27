@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class MessagesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @message = messages(:one)
+    @user = users(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -11,16 +14,8 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_message_url
+    get "/messages/new", params: {id: @user.id}
     assert_response :success
-  end
-
-  test "should create message" do
-    assert_difference('Message.count') do
-      post messages_url, params: { message: { body: @message.body, title: @message.title } }
-    end
-
-    assert_redirected_to message_url(Message.last)
   end
 
   test "should show message" do
