@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   devise_for :users
   devise_for :admins
   root 'pages#home'
